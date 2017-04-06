@@ -41,13 +41,29 @@ violent :- combat.
 violent :- cruautee.
 politiquement-correct :- langage_correct, negatif(theme_contreverse).
 medieval :- negatif(arme-a-feux),chevaliers,chateaux.
+crime :- drogues.
+crime :-  traffic.
+crime :-  meurtre.
+crime :-  fraude.
+cime :- gang.
+futuriste :- se-deroule-dans-le-futur.
+futuriste :- robots.
 
 % ---- 1
 public_jeune :- non-violent, politiquement-correct.
 super-heros :- costume, violence.
 fantastique :- medieval, violence.
-futuriste :- se-deroule-dans-le-futur.
-futuriste :- robots.
+policier :- enquete, crime.
+dystopie :- futuriste, pessimiste.
+science-fiction :- voyage_dans_le_temps, espace, futuriste.
+personnage_jeune :- enfants.
+personnage_jeune :- collegiens.
+personnage_jeune :- ecole.
+medical :- docteurs, hopital,psychiatrie.
+medical :- docters,hopital.
+bikers :- gang,moto.
+
+
 
 %----------------------
 %BASE DE DONNEE
@@ -64,8 +80,8 @@ breaking_bad :- negatif(animation), negatif(adaptation), americain, negatif(humo
 house :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), medical.
 stranger_things :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), negatif(medical), science-fiction.
 true_detective :- negatif(animation), negatif(adaptation), americain, negatif(humoristique),negatif(personnage_criminel),negatif(medical),negatif(science-fiction).
-doctor_who :- negatif(animation), negatif(adaptation), negatif(americain), science-fiction, serie_plus_de_50_ans.
-black_mirrow :- negatif(animation), negatif(adaptation), negatif(americain), science-fiction, negatif(serie_plus_de_50_ans).
+doctor_who :- negatif(animation), negatif(adaptation), negatif(americain), science-fiction, negatif(dystopie).
+black_mirrow :- negatif(animation), negatif(adaptation), negatif(americain), science-fiction, dystopie.
 broadchurch :- negatif(animation), negatif(adaptation), negatif(americain), negatif(science-fiction),policier.
 the_thick_of_it :- negatif(animation), negatif(adaptation), negatif(americain), negatif(science-fiction), negatif(policier).
 
