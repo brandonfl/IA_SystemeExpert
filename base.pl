@@ -13,19 +13,18 @@ k.
 %----------------------
 %BASE DES REGLES
 %----------------------
-i :- k,w,m.
+Simpson :- animation, public_jeune.
+Rich_et_Marty :- animation,  public_jeune, personnage_jeune.
+Archer :- animation, negatif(public_jeune), negatif(personnage_jeune).
+Dardevil :- negatif(animation), adaptation, super-heros.
+Game_of_Thrones :- negatif(animation), adaptation, negatif(super-heros), fantastique.
+Sherlock :- negatif(animation), adaptation, negatif(super-heros), negatif(fantastique).
+The_Office :- negatif(animation), negatif(adaptation), americain, humoristique.
+Sons_of_Anarchy :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), personnage_criminels, bikers. 
+Breaking_Bad :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), personnage_criminels, negatif(bikers).
+House :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), medical.
+Stranger_Things :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), negatif(medical), science-fiction.
 
-q :- i,w,j.
-q :- a,b.
-q :- w,n,o,p.
-
-b :- f,h.
-
-f :- g.
-
-r :- c,h.
-
-s :- r,j,m.
 
 % MOTEUR D’INFERENCES
 %-----------------------
