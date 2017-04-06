@@ -13,17 +13,22 @@ k.
 %----------------------
 %BASE DES REGLES
 %----------------------
-Simpson :- animation, public_jeune.
-Rich_et_Marty :- animation,  public_jeune, personnage_jeune.
-Archer :- animation, negatif(public_jeune), negatif(personnage_jeune).
-Dardevil :- negatif(animation), adaptation, super-heros.
-Game_of_Thrones :- negatif(animation), adaptation, negatif(super-heros), fantastique.
-Sherlock :- negatif(animation), adaptation, negatif(super-heros), negatif(fantastique).
-The_Office :- negatif(animation), negatif(adaptation), americain, humoristique.
-Sons_of_Anarchy :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), personnage_criminels, bikers. 
-Breaking_Bad :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), personnage_criminels, negatif(bikers).
-House :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), medical.
-Stranger_Things :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), negatif(medical), science-fiction.
+simpson :- animation, public_jeune.
+rich_et_marty :- animation,  public_jeune, personnage_jeune.
+archer :- animation, negatif(public_jeune), negatif(personnage_jeune).
+dardevil :- negatif(animation), adaptation, super-heros.
+game_of_thrones :- negatif(animation), adaptation, negatif(super-heros), fantastique.
+sherlock :- negatif(animation), adaptation, negatif(super-heros), negatif(fantastique).
+the_office :- negatif(animation), negatif(adaptation), americain, humoristique.
+sons_of_anarchy :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), personnage_criminels, bikers. 
+breaking_bad :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), personnage_criminels, negatif(bikers).
+house :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), medical.
+stranger_things :- negatif(animation), negatif(adaptation), americain, negatif(humoristique), negatif(personnage_criminels), negatif(medical), science-fiction.
+true_detective :- negatif(animation), negatif(adaptation), americain, negatif(humoristique),negatif(personnage_criminel),negatif(medical),negatif(science-fiction).
+doctor_who :- negatif(animation), negatif(adaptation), negatif(americain), science-fiction, serie_plus_de_50_ans.
+black_mirrow :- negatif(animation), negatif(adaptation), negatif(americain), science-fiction, negatif(serie_plus_de_50_ans).
+broadchurch :- negatif(animation), negatif(adaptation), negatif(americain), negatif(science-fiction),policier.
+the_thick_of_it :- negatif(animation), negatif(adaptation), negatif(americain), negatif(science-fiction), negatif(policier).
 
 
 % MOTEUR D’INFERENCES
