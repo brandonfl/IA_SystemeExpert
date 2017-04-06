@@ -1,15 +1,59 @@
 :- unknown(trace,fail).
 :- dynamic(negatif/1).
+
+%----------------------
+%BASE DES FAITS
+%----------------------
+serie(simpson).
+serie(rich_et_morty).
+serie(archer).
+serie(dardevil).
+serie(game_of_thrones).
+serie(sherlock).
+serie(the_office).
+serie(sons_of_anarchy).
+serie(breaking_bad).
+serie(house).
+serie(stranger-things).
+serie(true_detective).
+serie(doctor_who).
+serie(black_mirrow).
+serie(broadchurch).
+serie(the_thick_of_it).
+
 %----------------------
 %BASE DES INFERENCES
 %----------------------
 
+% ---- 3
+
+theme_contreverse :- sexe.
+theme_contreverse :- drogue.
+theme_contreverse :- alcool.
+theme_contreverse :- politique.
+theme_contreverse :- racisme.
+
+% ---- 2
+
+violent :- armes.
+violent :- sang.
+violent :- combat.
+violent :- cruautee.
+politiquement-correct :- langage_correct, negatif(theme_contreverse).
+medieval :- negatif(arme-a-feux),chevaliers,chateaux.
+
+% ---- 1
+public_jeune :- non-violent, politiquement-correct.
+super-heros :- costume, violence.
+fantastique :- medieval, violence.
+futuriste :- se-deroule-dans-le-futur.
+futuriste :- robots.
 
 %----------------------
 %BASE DE DONNEE
 %----------------------
 simpson :- animation, public_jeune.
-rich_et_marty :- animation,  public_jeune, personnage_jeune.
+rich_et_morty :- animation,  public_jeune, personnage_jeune.
 archer :- animation, negatif(public_jeune), negatif(personnage_jeune).
 dardevil :- negatif(animation), adaptation, super-heros.
 game_of_thrones :- negatif(animation), adaptation, negatif(super-heros), fantastique.
@@ -30,6 +74,12 @@ the_thick_of_it :- negatif(animation), negatif(adaptation), negatif(americain), 
 %-----------------------
 si(C,A,_):- C,!,A.
 si(_,_,S) :- S.
+
+rdv-chez-le-medecin :-
+  si((serie(Nom), effacer([Nom], Trace)),
+      afficher_succes([Nom], Trace),
+      write(’Aucune serie n’a pu être établi’)
+)
 
 expertiser(L) :- si(effacer(L,X,[]),ecrire_succes(L,X),ecrire_echec(L)).
 
