@@ -1,17 +1,12 @@
 :- unknown(trace,fail).
 :- dynamic(negatif/1).
 %----------------------
-%BASE DES FAITS ETABLIS
+%BASE DES INFERENCES
 %----------------------
-a.
-c.
-d.
-g.
-h.
-k.
+
 
 %----------------------
-%BASE DES REGLES
+%BASE DE DONNEE
 %----------------------
 simpson :- animation, public_jeune.
 rich_et_marty :- animation,  public_jeune, personnage_jeune.
