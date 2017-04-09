@@ -4,8 +4,6 @@
 %----------------------
 %BASE DES FAITS
 %----------------------
-noeud(public_jeune).
-
 serie(simpson).
 serie(rich_et_morty).
 serie(archer).
@@ -70,7 +68,7 @@ bikers :- gang,moto.
 %----------------------
 %BASE DE DONNEE
 %----------------------
-simpson :- animation,public_jeune.
+simpson :- animation, public_jeune.
 rich_et_morty :- animation,  public_jeune, personnage_jeune.
 archer :- animation, negatif(public_jeune), negatif(personnage_jeune).
 daredevil :- negatif(animation), adaptation, super_heros.
@@ -94,11 +92,12 @@ si(C,A,_):- C,!,A.
 si(_,_,S) :- S.
 
 trouveUneSerie :-
-    si((serie(Nom), effacer([Nom], Trace,_)),
+    si((serie(Nom), expertiser2([Nom])),
         ecrire_succes([Nom], Trace),
         write('Aucun diagnostique, n’a pu être établi')).
 
 expertiser(L) :- si(effacer(L, Trace,[]), ecrire_succes(L, Trace), ecrire_echec(L)).
+expertiser2(L) :- effacer(L, Trace,[]) , ! ,ecrire_succes(L, Trace).
 
 effacer([]).
 effacer([But|AutresButs]) :-
@@ -107,10 +106,11 @@ effacer([But|AutresButs]) :-
     effacer(AutresButs).
 
 effacer([],[]).
-effacer([But|_], _) :- negatif(But), !, fail.
+effacer([But|_], _) :- negatif(But),!,fail.
 effacer([But|AutresButs], [[But|TSousButs]|TAutresButs]) :-
     rule(But,SousButs),
-    effacer(SousButs,TSousButs), !,
+    effacer(SousButs,TSousButs),
+    si(SousButs=[_|_], asserta(But), true),
     effacer(AutresButs,TAutresButs).
 effacer([But|AutresButs], [[But]| TAutresButs]) :- write('le fait '), write(But),
     write(' est-il etabli ? (o./n./p.):'), nl, read(Rep),
@@ -121,14 +121,15 @@ effacer([But|AutresButs], [[But]| TAutresButs]) :- write('le fait '), write(But)
                 fail)).
 
 effacer([],[],_).
-effacer([But|_], _, _) :- negatif(But), !, fail.
+effacer([But|_], _, _) :- negatif(But), fail.
 effacer([But|AutresButs], [[But|TSousButs]|TAutresButs], Pourquoi) :-
     rule(But,SousButs),
     effacer(SousButs, TSousButs,[But|Pourquoi]), !,
     effacer(AutresButs, TAutresButs, Pourquoi).
 effacer([But|AutresButs], [[But]|TAutresButs], Pourquoi) :-
+    afficher_pourquoi(Pourquoi), nl,
     write('le fait '), write(But), write(' est-il etabli ? (o./n./p.):'), nl,
-    afficher_pourquoi(Pourquoi), nl, read(Rep),
+    read(Rep),
     si(Rep='o',
         (asserta(But), effacer(AutresButs,TAutresButs,Pourquoi)),
         si(Rep='n',
