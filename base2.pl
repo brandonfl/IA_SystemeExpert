@@ -45,7 +45,7 @@ crime :- drogues.
 crime :-  traffic.
 crime :-  meurtre.
 crime :-  fraude.
-cime :- gang.
+crime :- gang.
 futuriste :- se_deroule_dans_le_futur.
 futuriste :- robots.
 
