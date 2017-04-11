@@ -1,6 +1,6 @@
 %:- unknown(trace,fail).
 :- dynamic(negatif/1).
-
+%prog
 %----------------------
 %BASE DES FAITS
 %----------------------
