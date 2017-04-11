@@ -5,7 +5,7 @@
 %BASE DES FAITS
 %----------------------
 serie(simpson).
-serie(rich_et_morty).
+serie(rick_et_morty).
 serie(archer).
 serie(daredevil).
 serie(game_of_thrones).
@@ -32,6 +32,9 @@ theme_contreverse :- drogue.
 theme_contreverse :- alcool.
 theme_contreverse :- politique.
 theme_contreverse :- racisme.
+arme_a_feux :- pistolet.
+arme_a_feux :- bombes.
+arme_a_feux :- coups_de_feu.
 
 % ---- 2
 
@@ -39,8 +42,8 @@ violent :- armes.
 violent :- sang.
 violent :- combat.
 violent :- cruautee.
-politiquement-correct :- langage_correct, negatif(theme_contreverse).
-medieval :- negatif(arme-a-feux),chevaliers,chateaux.
+politiquement_correct :- langage_correct, negatif(theme_contreverse).
+medieval :- negatif(arme_a_feux),chevaliers,chateaux.
 crime :- drogues.
 crime :-  traffic.
 crime :-  meurtre.
@@ -50,7 +53,7 @@ futuriste :- se_deroule_dans_le_futur.
 futuriste :- robots.
 
 % ---- 1
-public_jeune :- non-violent, politiquement-correct.
+public_jeune :- negatif(violent), politiquement_correct.
 super_heros :- costume, violence.
 fantastique :- medieval, violence.
 policier :- enquete, crime.
@@ -69,7 +72,7 @@ bikers :- gang,moto.
 %BASE DE DONNEE
 %----------------------
 simpson :- animation, public_jeune.
-rich_et_morty :- animation,  public_jeune, personnage_jeune.
+rick_et_morty :- animation,  public_jeune, personnage_jeune.
 archer :- animation, negatif(public_jeune), negatif(personnage_jeune).
 daredevil :- negatif(animation), adaptation, super_heros.
 game_of_thrones :- negatif(animation), adaptation, negatif(super_heros), fantastique.
@@ -93,7 +96,7 @@ si(_,_,S) :- S.
 
 trouveUneSerie :-
     si((serie(Nom), expertiser2([Nom])),
-        ecrire_succes([Nom], Trace),
+        ecrire_succes([Nom], _),
         write('Aucun diagnostique, n’a pu être établi')).
 
 expertiser(L) :- si(effacer(L, Trace,[]), ecrire_succes(L, Trace), ecrire_echec(L)).
@@ -105,23 +108,8 @@ effacer([But|AutresButs]) :-
     effacer(SousButs),
     effacer(AutresButs).
 
-effacer([],[]).
-effacer([But|_], _) :- negatif(But),!,fail.
-effacer([But|AutresButs], [[But|TSousButs]|TAutresButs]) :-
-    rule(But,SousButs),
-    effacer(SousButs,TSousButs),
-    si(SousButs=[_|_], asserta(But), true),
-    effacer(AutresButs,TAutresButs).
-effacer([But|AutresButs], [[But]| TAutresButs]) :- write('le fait '), write(But),
-    write(' est-il etabli ? (o./n./p.):'), nl, read(Rep),
-    si(Rep='o',
-        (asserta(But), effacer(AutresButs,TAutresButs)),
-        si(Rep='n',
-            (asserta(negatif(But)),fail),
-                fail)).
-
 effacer([],[],_).
-effacer([But|_], _, _) :- negatif(But), fail.
+effacer([But|_], _, _) :- negatif(But),!, fail.
 effacer([But|AutresButs], [[But|TSousButs]|TAutresButs], Pourquoi) :-
     rule(But,SousButs),
     effacer(SousButs, TSousButs,[But|Pourquoi]), !,
