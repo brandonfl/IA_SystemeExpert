@@ -1,6 +1,6 @@
 %:- unknown(trace,fail).
 :- dynamic(negatif/1).
-%prog
+
 %----------------------
 %BASE DES FAITS
 %----------------------
@@ -27,11 +27,11 @@ serie(the_thick_of_it).
 
 % ---- 3
 
-theme_contreverse :- sexe.
-theme_contreverse :- drogue.
-theme_contreverse :- alcool.
-theme_contreverse :- politique.
-theme_contreverse :- racisme.
+theme_controverse :- sexe.
+theme_controverse :- drogue.
+theme_controverse :- alcool.
+theme_controverse :- politique.
+theme_controverse :- racisme.
 arme_a_feux :- pistolet.
 arme_a_feux :- bombes.
 arme_a_feux :- coups_de_feu.
@@ -42,7 +42,7 @@ violent :- armes.
 violent :- sang.
 violent :- combat.
 violent :- cruautee.
-politiquement_correct :- langage_correct, negatif(theme_contreverse).
+politiquement_correct :- langage_correct, negatif(theme_controverse).
 medieval :- negatif(arme_a_feux),chevaliers,chateaux.
 crime :- drogues.
 crime :-  traffic.
@@ -62,8 +62,8 @@ science_fiction :- voyage_dans_le_temps, espace, futuriste.
 personnage_jeune :- enfants.
 personnage_jeune :- collegiens.
 personnage_jeune :- ecole.
-medical :- docteurs, hopital,psychiatrie.
-medical :- docters,hopital.
+medical :- docteurs, hopital.
+medical :- psychiatrie.
 bikers :- gang,moto.
 
 
