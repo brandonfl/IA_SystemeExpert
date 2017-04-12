@@ -79,7 +79,7 @@ si(C,A,_):- C,!,A.
 si(_,_,S) :- S.
 
 trouveUneSerie :-
-    si((serie(Nom), expertiser2([Nom])),
+    si((serie(Nom),effacer([Nom], Trace,[])),
         ecrire_succes([Nom], _),
         write('Aucun diagnostique, n’a pu être établi')).
 
