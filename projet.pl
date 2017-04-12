@@ -1,4 +1,3 @@
-%:- unknown(trace).
 :- dynamic(non/1).
 
 %----------------------
