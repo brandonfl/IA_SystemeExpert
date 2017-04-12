@@ -1,4 +1,4 @@
-%:- unknown(trace,fail).
+%:- unknown(trace).
 :- dynamic(non/1).
 
 %----------------------
@@ -81,7 +81,7 @@ si(C,A,_):- C,!,A.
 si(_,_,S) :- S.
 
 trouveUneSerie :-
-    si((serie(Nom),effacer([Nom], Trace,[])),
+    si((serie(Nom),expertiser2([Nom])),
         ecrire_succes([Nom], _),
         write('Aucun diagnostique, n’a pu être établi')).
 
