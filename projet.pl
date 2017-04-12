@@ -80,9 +80,9 @@ si(C,A,_):- C,!,A.
 si(_,_,S) :- S.
 
 trouveUneSerie :-
-    si((serie(Nom),effacer([Nom], Trace,[])),
-    ecrire_succes([Nom], _),
-    write('Aucun diagnostique, n’a pu être établi')).
+    si((serie(Nom), expertiser2([Nom])),
+        ecrire_succes([Nom], _),
+        write('Aucun diagnostique, n’a pu être établi')).
 
 expertiser(L) :- si(effacer(L, Trace,[]), ecrire_succes(L, Trace), ecrire_echec(L)).
 expertiser2(L) :- effacer(L, Trace,[]) , ! ,ecrire_succes(L, Trace).
