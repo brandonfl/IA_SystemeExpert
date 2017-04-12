@@ -23,8 +23,8 @@ serie(the_thick_of_it).
 %----------------------
 %BASE DES INFERENCES
 %----------------------
-non_violent :- violent,!,fail.
-non_themes_adultes :- themes_adultes,!,fail.
+
+non_themes_adultes :- si(themes_adultes,nop,_).
 
 politiquement_correct :- langage_correct, non_themes_adultes.
 public_jeune :- politiquement_correct, non_violent.
@@ -87,7 +87,9 @@ trouveUneSerie :-
 expertiser(L) :- si(effacer(L, Trace,[]), ecrire_succes(L, Trace), ecrire_echec(L)).
 expertiser2(L) :- effacer(L, Trace,[]) , ! ,ecrire_succes(L, Trace).
 
+
 effacer([],[],_).
+effacer([But|_],_,_) :- But == nop,!,fail.
 effacer([But|_], _, _) :- non(But),!, fail.
 effacer([But|AutresButs], [[But|TSousButs]|TAutresButs], Pourquoi) :-
     rule(But,SousButs),
