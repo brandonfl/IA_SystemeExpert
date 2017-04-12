@@ -24,9 +24,11 @@ serie(the_thick_of_it).
 %----------------------
 %BASE DES INFERENCES
 %----------------------
+non_violent :- violent,!,fail.
+non_themes_adultes :- themes_adultes,!,fail.
 
-politiquement_correct :- langage_correct, non(themes_adultes).
-public_jeune :- politiquement_correct, non(violent).
+politiquement_correct :- langage_correct, non_themes_adultes.
+public_jeune :- politiquement_correct, non_violent.
 policier :- enquete, crime, action.
 science_fiction :- futuriste, aventure.
 science_fiction :- voyage_dans_le_temps.
@@ -55,22 +57,22 @@ dystopique :- futuriste, ton_sombre.
 %BASE DE DONNEE
 %----------------------
 simpsons :- animation, public_jeune.
-rick_and_morty :- animation,  non(public_jeune), personnage_jeune.
+rick_and_morty :- animation, personnage_jeune.
 rick_and_morty :- animation, science_fiction.
-archer :- animation, non(public_jeune), non(personnage_jeune).
-daredevil :- non(animation), adaptation, super_heros, drame, ton_sombre.
-game_of_thrones :- non(animation), adaptation, non(super_heros), medieval, drame.
-sherlock :- non(animation), adaptation, non(super_heros), non(medieval), non(americain), policier, langage_correct, humour, drame.
-the_office :- non(animation), non(adaptation), americain, humour.
-sons_of_anarchy :- non(animation), non(adaptation), americain, non(humoristique), crime, action, trafficants, bikers.
-breaking_bad :- non(animation), non(adaptation), americain, non(humoristique), crime, trafficants, non(bikers).
-house :- non(animation), non(adaptation), americain, non(humoristique), non(crime), non(politiquement_correct), medical.
-stranger_things :- non(animation), non(adaptation), americain, non(humoristique), non(crime), non(medical), science_fiction, politiquement_correct, action.
-true_detective :- non(animation), non(adaptation), americain, non(humoristique), crime, non(medical),non(science_fiction), themes_adultes, policier, ton_sombre.
-doctor_who :- non(animation), non(adaptation), non(americain), science_fiction, non(dystopie), docteur, public_jeune, aventure.
-black_mirror :- non(animation), non(adaptation), non(americain), drame, dystopique.
-broadchurch :- non(animation), non(adaptation), non(americain), non(science_fiction),policier, drame, ton_sombre, themes_adultes.
-the_thick_of_it :- non(animation), non(adaptation), non(americain), non(science_fiction), non(policier), humour,non(langage_correct), non(politiquement_correct).
+archer :- animation.
+daredevil :- adaptation, super_heros, drame, ton_sombre.
+game_of_thrones :- adaptation, medieval, drame.
+sherlock :- adaptation, policier, langage_correct, humour, drame.
+the_office :- americain, humour.
+sons_of_anarchy :- americain, crime, action, trafficants, bikers.
+breaking_bad :- americain, crime, trafficants.
+house :- americain, medical.
+stranger_things :- americain,science_fiction, politiquement_correct, action.
+true_detective :- americain, crime, themes_adultes, policier, ton_sombre.
+doctor_who :- science_fiction, docteur, public_jeune, aventure.
+black_mirror :-  drame, dystopique.
+broadchurch :- policier, drame, ton_sombre, themes_adultes.
+the_thick_of_it :-  humour.
 
 
 % MOTEUR D’INFERENCES
